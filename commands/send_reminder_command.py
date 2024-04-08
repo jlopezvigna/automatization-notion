@@ -1,7 +1,6 @@
 from integrations.email_util import send_expenses_reminder_email
 from dotenv import load_dotenv
 import os
-
 from utils.logger_factory import LoggerFactory
 
 load_dotenv()
