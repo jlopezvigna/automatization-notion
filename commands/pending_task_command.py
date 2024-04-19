@@ -1,7 +1,14 @@
-from dotenv import load_dotenv
+import sys
 import os
-from integrations import NotionAPI
-from integrations import send_task_template
+
+current_dir = os.path.dirname(__file__)
+root_dir = os.path.dirname(current_dir)
+sys.path.append(root_dir)
+
+from dotenv import load_dotenv
+from integrations.email_sender import send_task_template
+from integrations.notion import NotionAPI
+
 from models.status_type import StatusPropertyClass
 from utils.logger_factory import LoggerFactory
 

@@ -15,7 +15,7 @@ PASSWORD = os.getenv('PASSWORD')
 
 def send_template_email(subject, template, attachment_path=None):
     message = MIMEMultipart()
-    message['From'] = SENDER
+    message['From'] = formataddr(("SimplyDevTools", SENDER))
     message['To'] = ', '.join([RECIPIENTS])
     message['Subject'] = subject
 
