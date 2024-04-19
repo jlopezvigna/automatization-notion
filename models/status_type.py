@@ -1,7 +1,9 @@
-from enum import StrEnum
+# TODO: Update python 3.11 in AWS
+# from enum import StrEnum
+from enum import Enum
 
 
-class StatusPropertyClass(StrEnum):
+class StatusPropertyClass(str, Enum):
     NEW = 'New'
     ACTIVE = 'Active'
     RESOLVED = 'Resolved'
