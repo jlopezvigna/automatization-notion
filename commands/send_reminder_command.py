@@ -1,6 +1,8 @@
-from integrations.email_util import send_expenses_reminder_email
+
 from dotenv import load_dotenv
 import os
+
+from integrations import send_expenses_reminder_email
 from utils.logger_factory import LoggerFactory
 
 load_dotenv()
@@ -16,7 +18,7 @@ logger = LoggerFactory.get_logger("EXPENSES REMINDER", log_level="INFO")
 def send_reminder_command():
     try:
         send_expenses_reminder_email(SUBJECT, SENDER, [RECIPIENTS], PASSWORD)
-        logger.error(f"Reminder sent successfully")
+        logger.info(f"Reminder sent successfully")
     except (BrokenPipeError, IOError) as error:
         logger.error(f"Expenses Reminder - {type(error).__name__}: {error}")
 
