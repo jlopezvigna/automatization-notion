@@ -24,15 +24,27 @@ notion = NotionAPI(NOTION_TOKEN)
 
 
 def get_pending_task():
-    filters = {
+    body = {
         "filter": {
             "property": "Status",
             "select": {
                 "does_not_equal": StatusPropertyClass.RESOLVED
             }
-        }
+        },
+        "sorts": [
+            {
+                "property": "Status",
+                "direction": "descending"
+            },
+            {
+
+                "property": "Priority",
+                "direction": "ascending"
+            }
+        ]
     }
-    return notion.database_query(NOTION_DASHBOARD_DATABASE, filters)
+
+    return notion.database_query(NOTION_DASHBOARD_DATABASE, body)
 
 
 def main():

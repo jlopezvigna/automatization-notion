@@ -32,14 +32,13 @@ class NotionAPI:
             print("Error", error, type(error).__name__)
             return error
 
-    def database_query(self, database_id, filters=None):
-        if filters is None:
-            filters = {}
+    def database_query(self, database_id, body=None):
+        if body is None:
+            body = {}
 
         try:
-            response = self.post(f'/databases/{database_id}/query', filters)
+            response = self.post(f'/databases/{database_id}/query', body)
             return response['results']
         except Exception as error:
             print("Error", error, type(error).__name__)
             return error
-
